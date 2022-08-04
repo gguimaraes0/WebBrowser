@@ -1,0 +1,65 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ShowActivated="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="90*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="52*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0">
+                <Button.Content>
+                    <TextBlock Text="Voltar"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="1">
+                <Button.Content>
+                    <TextBlock Text="Avançar"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="2"
+                    Click="btnRefresh_Click">
+                <Button.Content>
+                    <TextBlock Text="Atualizar"/>
+                </Button.Content>
+            </Button>
+            <TextBox Grid.Column="3" x:Name="txtUrl">
+            </TextBox>
+            <Button Grid.Column="4"
+                    Click="btnGo_Click">
+                <Button.Content>
+                    <TextBlock Text="Ir"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="5">
+                <Button.Content>
+                    <TextBlock Text="Downloads"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="6">
+                <Button.Content>
+                    <TextBlock Text="Configurações"/>
+                </Button.Content>
+            </Button>
+
+        </Grid>
+        <Grid Grid.Row="2" x:Name="gridContent">
+        </Grid>
+
+    </Grid>
+</Window>
