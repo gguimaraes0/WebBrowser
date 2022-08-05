@@ -23,6 +23,8 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         ChromiumWebBrowser browser;
+        public ICommand ForwardCommand { get; private set; }
+        public ICommand BackCommand { get; private set; }
 
 
 
@@ -41,11 +43,6 @@ namespace WpfApp1
         private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             txtUrl.Text = e.NewValue.ToString();
-        }
-
-        private void btnGo_Click(object sender, RoutedEventArgs e)
-        {
-            browser.Load(txtUrl.Text);
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -70,6 +67,16 @@ namespace WpfApp1
             {
                 browser.Load(txtUrl.Text);
             }
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            //  CanGoBack
+        }
+
+        private void btnAvancar_Click(object sender, RoutedEventArgs e)
+        {
+          // CanGoForward
         }
     }
 }

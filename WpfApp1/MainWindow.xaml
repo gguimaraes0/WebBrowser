@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ShowActivated="True">
     <Grid>
@@ -12,58 +12,55 @@
             <RowDefinition Height="4*"></RowDefinition>
             <RowDefinition Height="90*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Background="Gray">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
-                <ColumnDefinition Width="46*"></ColumnDefinition>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
-                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="88*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Row="0">
-                <Button.Content>
-                    <TextBlock Text="Voltar"/>
-                </Button.Content>
-                <materi
-            </Button>
-            <Button Grid.Column="1">
-                <Button.Content>
-                    <TextBlock Text="Avançar"/>
-                </Button.Content>
-            </Button>
-            <Button Grid.Column="2"
-                    Click="btnRefresh_Click">
-                <Button.Content>
-                    <TextBlock Text="Atualizar"/>
-                </Button.Content>
-            </Button>
-            <TextBox Grid.Column="3" x:Name="txtUrl" TextChanged="txtUrl_TextChanged" VerticalAlignment="Center" Height="20" KeyDown="txtUrl_KeyDown">
+            <Button
+                  Click="btnVoltar_Click"
+               Padding="5"
+                Height="30"
+               Grid.Column="0"
+               Content="{materialDesign:PackIcon ArrowLeft}"
+               ToolTip="Icon"
+               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            <Button
+               Click="btnAvancar_Click"
+               Height="30"
+               Grid.Column="1"
+               Content="{materialDesign:PackIcon ArrowRight}"
+               ToolTip="Icon"
+               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            <Button
+                Height="30"
+               Padding="5"           
+               Grid.Column="2"
+               Click="btnRefresh_Click"
+               Content="{materialDesign:PackIcon Refresh}"
+               ToolTip="Icon"
+               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+            <TextBox Grid.Column="3" x:Name="txtUrl" FontSize="18" TextChanged="txtUrl_TextChanged" VerticalAlignment="Center" Height="30" KeyDown="txtUrl_KeyDown">
             </TextBox>
-            <Button Grid.Column="4"
-                    Click="btnGo_Click">
-                <Button.Content>
-                    <TextBlock Text="Ir"/>
-                </Button.Content>
-            </Button>
-            <Button Grid.Column="5">
-                <Button.Content>
-                    <TextBlock Text="Downloads"/>
-                </Button.Content>
-            </Button>
-            <Button Grid.Column="6">
-                <Button.Content>
-                    <TextBlock Text="Configurações"/>
-                </Button.Content>
-            </Button>
-            <Button Grid.Column="7"
-                     Click="btnFav_Click">
-                <Button.Content>
-                    <TextBlock Text="Favoritos"/>
-                </Button.Content>
-            </Button>
+            <Button             
+               Padding="5"  
+                Height="30"
+               Grid.Column="4"
+               Content="{materialDesign:PackIcon DownloadOutline}"
+               ToolTip="Icon"
+               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            <Button
+                Height="30"
+               Padding="5"                
+               Grid.Column="5"
+               Content="{materialDesign:PackIcon SettingsHelper}"
+               ToolTip="Icon"
+               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
 
         </Grid>
         <Grid Grid.Row="2" x:Name="gridContent">
