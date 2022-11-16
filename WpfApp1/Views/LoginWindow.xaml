@@ -13,42 +13,40 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Image Source="Assets\shallowLogo.png">
         </Image>
-
-
-        <StackPanel Grid.Row="2">
-            <CheckBox
-                x:Name="txtUser"
-                Content="Enabled"/>
-            <PasswordBox
-                Style="{StaticResource MaterialDesignFilledPasswordBox}"
-                materialDesign:HintAssist.Hint="Password"
-                materialDesign:TextFieldAssist.HasClearButton="True"
-                materialDesign:HintAssist.HelperText="Not bound password" />
-        </StackPanel>
-        <TextBlock     
-            x:Name="txtPassword"
-            Grid.Row="2"
-            Width="300"    
+        <TextBox
+            x:Name="txtUser"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Height="30"
-            materialDesign:HintAssist.Hint="Insira uma senha"
-            materialDesign:HintAssist.HelperText="Helper text longer than error">
-        </TextBlock>
+            Width="300"
+            Grid.Row="1"
+            Style="{StaticResource MaterialDesignFilledTextBox}"
+            TextWrapping="Wrap"
+            materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
+            materialDesign:HintAssist.Hint="Digite o usuário" />
+
+        <PasswordBox
+                Grid.Row="2"
+                Height="30"
+                Width="300"
+                x:Name="txtPassword"
+                Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:HintAssist.Hint="Digite sua senha" />
         <Button
-                        x:Name="bttLogin"
+            x:Name="bttLogin"
             Width="70"
-            Height="20"
+            Height="30"
             Grid.Row="3"
             Style="{StaticResource MaterialDesignRaisedLightButton}"
             materialDesign:ButtonAssist.CornerRadius="5"
-            ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+            ToolTip="Button with Round Corners"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
             <TextBlock
-      Text="5/50 Radius" />
+               Text="Entrar" />
         </Button>
     </Grid>
 </Window>
