@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ShowActivated="True">
     <Grid>
-        <Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
             <RowDefinition Height="90*"></RowDefinition>
@@ -64,7 +64,7 @@
 
         </Grid>
         <Grid Grid.Row="2" x:Name="gridContent">
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </Window>

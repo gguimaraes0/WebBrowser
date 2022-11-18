@@ -22,61 +22,57 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        ChromiumWebBrowser browser;
-        public ICommand ForwardCommand { get; private set; }
-        public ICommand BackCommand { get; private set; }
+        //ChromiumWebBrowser browser;
+        //public ICommand ForwardCommand { get; private set; }
+        //public ICommand BackCommand { get; private set; }
+
+        //public MainWindow()
+        //{
+        //    InitializeComponent();
+        //    CefSettings cefSettings = new CefSettings();
+        //    Cef.Initialize(cefSettings);
+        //    txtUrl.Text = "https://www.google.com.br";
+        //    browser = new ChromiumWebBrowser(txtUrl.Text);
+        //    gridContent.Children.Add(browser);
+        //    browser.AddressChanged += Browser_AddressChanged;
+        //}
 
 
+        //private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    txtUrl.Text = e.NewValue.ToString();
+        //}
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            CefSettings cefSettings = new CefSettings();
-            Cef.Initialize(cefSettings);
-            txtUrl.Text = "https://www.google.com.br";
-            browser = new ChromiumWebBrowser(txtUrl.Text);
-            gridContent.Children.Add(browser);
-            browser.AddressChanged += Browser_AddressChanged;
-        }
+        //private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        //{
+        //    browser.Load(txtUrl.Text);
+        //}
 
+        //private void txtUrl_TextChanged(object sender, TextChangedEventArgs e)
+        //{
 
-        private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            txtUrl.Text = e.NewValue.ToString();
-        }
+        //}
+        //private void btnFav_Click(object sender, RoutedEventArgs e)
+        //{
 
-        private void btnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            browser.Load(txtUrl.Text);
-        }
+        //}
 
-        private void txtUrl_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        //private void txtUrl_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Enter)
+        //    {
+        //        browser.Load(txtUrl.Text);
+        //    }
+        //}
 
-        }
+        //private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //  CanGoBack
+        //}
 
-
-        private void btnFav_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void txtUrl_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                browser.Load(txtUrl.Text);
-            }
-        }
-
-        private void btnVoltar_Click(object sender, RoutedEventArgs e)
-        {
-            //  CanGoBack
-        }
-
-        private void btnAvancar_Click(object sender, RoutedEventArgs e)
-        {
-          // CanGoForward
-        }
+        //private void btnAvancar_Click(object sender, RoutedEventArgs e)
+        //{
+        //  // CanGoForward
+        //}
     }
 }
