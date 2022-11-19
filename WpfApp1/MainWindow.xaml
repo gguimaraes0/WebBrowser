@@ -3,10 +3,77 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:WpfApp1.Views"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ShowActivated="True">
+        Title="MainWindow" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ShowActivated="True" Height="768" Width="1080">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridView" Background="Transparent" Grid.Row="0">
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
+                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    Margin="8"
+                    Height="40"
+                    Width="40"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <materialDesign:PackIcon
+                         Kind="ArrowLeft"/>
+                </Button>
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
+                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    Height="40"
+                    Width="40"
+                    Margin="8"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Grid.Column="1">
+                    <materialDesign:PackIcon
+                         Kind="ArrowRight"/>
+                </Button>
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
+                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    Grid.Column="2"
+                    Height="40"
+                    Width="40"
+                    Margin="8"
+                    Click="Home_Click"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <materialDesign:PackIcon
+                         Kind="Home"/>
+                </Button>
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
+                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    Grid.Column="3"
+                    Height="40"
+                    Width="40"
+                    Margin="8"
+                    Click="btnConfig_Click"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <materialDesign:PackIcon
+                         Kind="Cog"/>
+                </Button>
+            </Grid>
+        </Grid>
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>

@@ -17,7 +17,10 @@ namespace WpfApp1.Views
         private void bttLogin_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
+            mainWindow.Show();
+
+            this.Close();
+
         }
     }
 }

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{C4267BB4-C594-4A7E-88DD-73A62B990C29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shallow.Desktop", "WpfApp1\Shallow.Desktop.csproj", "{C4267BB4-C594-4A7E-88DD-73A62B990C29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shallow.API", "Shallow.API\Shallow.API.csproj", "{5400A73A-CE71-4696-9FF3-27E80BA4F791}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Shallow.Setup", "Shallow.Setup\Shallow.Setup.vdproj", "{8BF9547B-7DA4-4304-B364-13047F024F1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,12 @@ Global
 		{C4267BB4-C594-4A7E-88DD-73A62B990C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4267BB4-C594-4A7E-88DD-73A62B990C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4267BB4-C594-4A7E-88DD-73A62B990C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5400A73A-CE71-4696-9FF3-27E80BA4F791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5400A73A-CE71-4696-9FF3-27E80BA4F791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5400A73A-CE71-4696-9FF3-27E80BA4F791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5400A73A-CE71-4696-9FF3-27E80BA4F791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF9547B-7DA4-4304-B364-13047F024F1F}.Debug|Any CPU.ActiveCfg = Debug
+		{8BF9547B-7DA4-4304-B364-13047F024F1F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

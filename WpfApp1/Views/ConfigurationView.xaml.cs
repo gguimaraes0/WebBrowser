@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CefSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Interface;
 
 namespace WpfApp1.Views
 {
     /// <summary>
-    /// Interação lógica para MenuControl.xam
+    /// Interaction logic for ConfigurationView.xaml
     /// </summary>
-    public partial class MenuControl : UserControl
+    public partial class ConfigurationView : UserControl
     {
-        public MenuControl()
+        public ConfigurationView()
         {
             InitializeComponent();
         }
