@@ -20,8 +20,8 @@ namespace WpfApp1.Views
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
 
-            ResponsavelService.deleteResponsavel(84);
-            ResponsavelService.postResponsavel();
+            //ResponsavelService.deleteResponsavel(84);
+         //   ResponsavelService.postResponsavel();
 
 
 
