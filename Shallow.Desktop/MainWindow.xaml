@@ -5,21 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:WpfApp1.Views"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized" ShowActivated="True" Height="768" Width="1080">
-    <Grid>
+       Title="Shallow" Height="768" Width="1366" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
+        Background="Transparent" WindowState="Maximized" ResizeMode="NoResize" ShowActivated="True">
+    <Grid Background="MediumPurple" MouseDown="Window_MouseDown" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="92*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="86*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="GridView" Background="Transparent" Grid.Row="0">
+        <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="28*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="btnMinimize"
+                    Click="BtnMinimize_Click"
+                    ToolTip="Minimizar"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Height="35"
+                    Width="35"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    Margin="5"
+                    >
+                    <materialDesign:PackIcon
+                        Kind="WindowMinimize"
+                        Width="auto"
+                        Height="auto"
+                        Margin="5"
+                        />
+                </Button>
+                <Button
+                    x:Name="btnMaximize"
+                    Click="BtnMaximize_Click"
+                    ToolTip="Maximizar"
+                    Grid.Column="3"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="White"
+                    Width="{Binding ActualWidth, ElementName=btnMinimize}"
+                    Height="{Binding ActualHeight,ElementName=btnMinimize}"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    Margin="5"
+                    >
+                    <materialDesign:PackIcon
+                        Kind="WindowMaximize"
+                        Width="auto"
+                        Height="auto"
+                        Margin="5"
+                    />
+                </Button>
+                <Button
+                    x:Name="btnClose"
+                    Click="BtnClose_Click"
+                    ToolTip="Fechar"
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="White"
+                    Width="{Binding ActualWidth, ElementName=btnMinimize}"
+                    Height="{Binding ActualHeight,ElementName=btnMinimize}"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                    Margin="5"
+                    >
+                    <materialDesign:PackIcon
+                        Kind="WindowClose"
+                        Width="auto"
+                        Height="auto"
+                        Margin="5"
+                    />
+                </Button>
+
+            </Grid>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid x:Name="GridView" Background="Transparent" Grid.Row="1" Margin="8">
+        </Grid>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="15*"/>
                     <ColumnDefinition Width="15*"/>
@@ -31,8 +109,10 @@
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
                     ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
                     Margin="8"
-                    Height="40"
-                    Width="40"
+                    Height="35"
+                    Width="35"
+                    Name="btnBack"
+                    Click="ButtonBack_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                     <materialDesign:PackIcon
                          Kind="ArrowLeft"/>
@@ -40,9 +120,11 @@
                 <Button
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
                     ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
-                    Height="40"
-                    Width="40"
+                    Height="35"
+                    Width="35"
                     Margin="8"
+                    Name="btnNext"
+                    Click="ButtonNext_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                     Grid.Column="1">
                     <materialDesign:PackIcon
@@ -52,8 +134,8 @@
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
                     ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
                     Grid.Column="2"
-                    Height="40"
-                    Width="40"
+                    Height="35"
+                    Width="35"
                     Margin="8"
                     Click="Home_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
@@ -64,8 +146,8 @@
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
                     ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
                     Grid.Column="3"
-                    Height="40"
-                    Width="40"
+                    Height="35"
+                    Width="35"
                     Margin="8"
                     Click="btnConfig_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
@@ -74,64 +156,5 @@
                 </Button>
             </Grid>
         </Grid>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="90*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Background="Gray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="88*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button
-                  Click="btnVoltar_Click"
-               Padding="5"
-                Height="30"
-               Grid.Column="0"
-               Content="{materialDesign:PackIcon ArrowLeft}"
-               ToolTip="Icon"
-               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-            <Button
-               Click="btnAvancar_Click"
-               Height="30"
-               Grid.Column="1"
-               Content="{materialDesign:PackIcon ArrowRight}"
-               ToolTip="Icon"
-               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-            <Button
-                Height="30"
-               Padding="5"           
-               Grid.Column="2"
-               Click="btnRefresh_Click"
-               Content="{materialDesign:PackIcon Refresh}"
-               ToolTip="Icon"
-               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-
-            <TextBox Grid.Column="3" x:Name="txtUrl" FontSize="18" TextChanged="txtUrl_TextChanged" VerticalAlignment="Center" Height="30" KeyDown="txtUrl_KeyDown">
-            </TextBox>
-            <Button             
-               Padding="5"  
-                Height="30"
-               Grid.Column="4"
-               Content="{materialDesign:PackIcon DownloadOutline}"
-               ToolTip="Icon"
-               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-            <Button
-                Height="30"
-               Padding="5"                
-               Grid.Column="5"
-               Content="{materialDesign:PackIcon SettingsHelper}"
-               ToolTip="Icon"
-               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-
-        </Grid>
-        <Grid Grid.Row="2" x:Name="gridContent">
-        </Grid>-->
-
     </Grid>
 </Window>

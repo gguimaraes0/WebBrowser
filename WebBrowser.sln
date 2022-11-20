@@ -9,6 +9,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Shallow.Setup", "Shallow.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shallow.Desktop", "Shallow.Desktop\Shallow.Desktop.csproj", "{C4267BB4-C594-4A7E-88DD-73A62B990C29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shallow.Model", "Shallow.Model\Shallow.Model.csproj", "{C657E74B-10A9-465B-B181-C940E7979E61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{C4267BB4-C594-4A7E-88DD-73A62B990C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4267BB4-C594-4A7E-88DD-73A62B990C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4267BB4-C594-4A7E-88DD-73A62B990C29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C657E74B-10A9-465B-B181-C940E7979E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C657E74B-10A9-465B-B181-C940E7979E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C657E74B-10A9-465B-B181-C940E7979E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C657E74B-10A9-465B-B181-C940E7979E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

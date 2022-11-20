@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WpfApp1.Interface;
 using WpfApp1.Views;
 
@@ -61,6 +62,46 @@ namespace WpfApp1
             }
             else
                 ICustomBrowser.HomePage();
+        }
+
+        private void BtnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void ButtonNext_Click(object sender, RoutedEventArgs e)
+        {
+            ICustomBrowser.ForwardPage(false);
+
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            ICustomBrowser.PreviousPage(false);
+
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,6 @@ namespace WpfApp1.Views
         }
         private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            //txtUrl.Text = e.NewValue.ToString();
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -66,24 +66,14 @@ namespace WpfApp1.Views
             //}
         }
 
-        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        public void PreviousPage(bool canGoBack)
         {
-            //  CanGoBack
+            browser.Back();
         }
 
-        private void btnAvancar_Click(object sender, RoutedEventArgs e)
+        public void ForwardPage(bool canGoForward)
         {
-            // CanGoForward
-        }
-
-        public void PreviousPage()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ForwardPage()
-        {
-            throw new NotImplementedException();
+            browser.Forward();
         }
 
         public void HomePage()

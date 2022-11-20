@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shallow.API.Services;
+using System;
 using System.Windows;
 
 
@@ -14,10 +15,15 @@ namespace WpfApp1.Views
             InitializeComponent();
         }
 
-        private void bttLogin_Click(object sender, RoutedEventArgs e)
+        private async void bttLogin_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+
+            ResponsavelService.deleteResponsavel(84);
+            ResponsavelService.postResponsavel();
+
+
 
             this.Close();
 

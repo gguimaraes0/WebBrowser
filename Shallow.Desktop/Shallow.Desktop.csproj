@@ -157,7 +157,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Shallow.API\Shallow.API.csproj">
+      <Project>{5400A73A-CE71-4696-9FF3-27E80BA4F791}</Project>
+      <Name>Shallow.API</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Assets\shallowLogo.png" />
   </ItemGroup>
