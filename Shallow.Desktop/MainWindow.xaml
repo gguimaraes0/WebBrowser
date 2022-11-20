@@ -7,7 +7,7 @@
         mc:Ignorable="d"
        Title="Shallow" Height="768" Width="1366" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
         Background="Transparent" WindowState="Maximized" ResizeMode="NoResize" ShowActivated="True">
-    <Grid Background="MediumPurple" MouseDown="Window_MouseDown" >
+    <Grid Background="LightYellow" MouseDown="Window_MouseDown" >
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="86*"/>
@@ -25,12 +25,11 @@
                 <Button
                     x:Name="btnMinimize"
                     Click="BtnMinimize_Click"
-                    ToolTip="Minimizar"
                     Grid.Column="2"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Background="Transparent"
-                    BorderBrush="White"
+                    Background="Green"
+                    BorderBrush="Black"
                     BorderThickness="1"
                     Height="35"
                     Width="35"
@@ -42,17 +41,17 @@
                         Width="auto"
                         Height="auto"
                         Margin="5"
+                        Foreground="Black"
                         />
                 </Button>
                 <Button
                     x:Name="btnMaximize"
                     Click="BtnMaximize_Click"
-                    ToolTip="Maximizar"
                     Grid.Column="3"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Background="Transparent"
-                    BorderBrush="White"
+                    Background="Yellow"
+                    BorderBrush="Black"
                     Width="{Binding ActualWidth, ElementName=btnMinimize}"
                     Height="{Binding ActualHeight,ElementName=btnMinimize}"
                     Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -63,17 +62,17 @@
                         Width="auto"
                         Height="auto"
                         Margin="5"
+                        Foreground ="Black"
                     />
                 </Button>
                 <Button
                     x:Name="btnClose"
                     Click="BtnClose_Click"
-                    ToolTip="Fechar"
                     Grid.Column="4"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Background="Transparent"
-                    BorderBrush="White"
+                    Background="Red"
+                    BorderBrush="Black"
                     Width="{Binding ActualWidth, ElementName=btnMinimize}"
                     Height="{Binding ActualHeight,ElementName=btnMinimize}"
                     Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -84,6 +83,7 @@
                         Width="auto"
                         Height="auto"
                         Margin="5"
+                        Foreground="Black"
                     />
                 </Button>
 
@@ -107,22 +107,27 @@
                 </Grid.ColumnDefinitions>
                 <Button
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
-                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    ToolTip="Voltar"
                     Margin="8"
-                    Height="35"
-                    Width="35"
+                    Height="45"
+                    Width="45"
+                    Background="LightGreen"
+                    BorderBrush="LightGreen"
                     Name="btnBack"
                     Click="ButtonBack_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                     <materialDesign:PackIcon
-                         Kind="ArrowLeft"/>
+                         Kind="ArrowLeft"
+                        />
                 </Button>
                 <Button
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
-                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
-                    Height="35"
-                    Width="35"
+                    ToolTip="Avançar"
+                    Height="45"
+                    Width="45"
                     Margin="8"
+                    Background="LightGreen"
+                    BorderBrush="LightGreen"
                     Name="btnNext"
                     Click="ButtonNext_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
@@ -132,11 +137,13 @@
                 </Button>
                 <Button
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
-                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    ToolTip="Tela Inicial"
                     Grid.Column="2"
-                    Height="35"
-                    Width="35"
+                    Height="45"
+                    Width="45"
                     Margin="8"
+                    Background="Orange"
+                    BorderBrush="Orange"
                     Click="Home_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                     <materialDesign:PackIcon
@@ -144,11 +151,13 @@
                 </Button>
                 <Button
                     Style="{StaticResource MaterialDesignFloatingActionSecondaryLightButton}"
-                    ToolTip="MaterialDesignFloatingActionSecondaryLightButton"
+                    ToolTip="Configurações"
                     Grid.Column="3"
-                    Height="35"
-                    Width="35"
+                    Height="45"
+                    Width="45"
                     Margin="8"
+                    Background="Gray"
+                    BorderBrush="Gray"
                     Click="btnConfig_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                     <materialDesign:PackIcon
