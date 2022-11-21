@@ -161,7 +161,7 @@
                     Click="btnConfig_Click"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                     <materialDesign:PackIcon
-                         Kind="Cog"/>
+                         Kind="FormatListBulleted"/>
                 </Button>
             </Grid>
         </Grid>

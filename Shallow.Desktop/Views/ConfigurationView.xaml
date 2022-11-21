@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:WpfApp1.Views" xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="CadetBlue">
+    <Grid Background="#e6e6aa">
         <DataGrid
-                        Name="dgPhysician"
+                        Name="dgSites"
                         Grid.Row="2"
                         Margin="100,105,100,100"
                         FontSize="12"
@@ -27,7 +27,7 @@
                         Grid.ColumnSpan="2"
                         HorizontalContentAlignment="Center"
                         RowHeaderWidth="0"
-                        ItemsSource="{Binding Sites}"
+                        DataContext="{Binding Source=Sites}"
                     >
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
@@ -38,9 +38,9 @@
             <DataGrid.Columns>
                 <!--Coluna do nome da url-->
                 <materialDesign:DataGridTextColumn
-                                Width="25*"
-                                Binding="{Binding Url}"
-                                Header="URL"
+                                Width="50*"
+                                Binding="{Binding url}"
+                                Header="URL"                               
                                 IsReadOnly="True"
                                 CanUserResize="False"
                                 EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
@@ -48,23 +48,28 @@
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+                            <Setter Property="FontSize"  Value="20"/>
+
                         </Style>
                     </materialDesign:DataGridTextColumn.HeaderStyle>
                     <materialDesign:DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
-                            <Setter Property="ToolTip"  Value="{Binding Url}"/>
+                            <Setter Property="ToolTip"  Value="{Binding url}"/>
                             <Setter Property="HorizontalAlignment" Value="Center"/>
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Foreground" Value="Black"/>
-                            <Setter Property="Margin" Value="2 0 2 0"/>
+                            <Setter Property="Margin" Value="2 20 2 20"/>
+                            <Setter Property="FontSize" Value="20"/>
                             <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="FontStyle" Value="Italic"/>
+
                         </Style>
                     </materialDesign:DataGridTextColumn.CellStyle>
                 </materialDesign:DataGridTextColumn>
                 <!--Coluna do Status-->
                 <materialDesign:DataGridTextColumn
-                                Width="21.75*"
-                                Binding="{Binding getStatus}"
+                                Width="50*"
+                                Binding="{Binding status}"
                                 Header="Status"
                                 IsReadOnly="True"
                                 CanUserResize="False"
@@ -73,15 +78,21 @@
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+                            <Setter Property="FontSize"  Value="15"/>
+
                         </Style>
                     </materialDesign:DataGridTextColumn.HeaderStyle>
                     <materialDesign:DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
-                            <Setter Property="ToolTip"  Value="{Binding getStatus}"/>
+                            <Setter Property="ToolTip"  Value="{Binding status}"/>
                             <Setter Property="HorizontalAlignment" Value="Center"/>
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Foreground" Value="Black"/>
-                            <Setter Property="Margin" Value="2 0 2 0"/>
+                            <Setter Property="FontStyle" Value="Normal"/>
+
+                            <Setter Property="Margin" Value="2 20 2 20"/>
+                            <Setter Property="FontSize" Value="15"/>
+
                             <Setter Property="BorderBrush" Value="Transparent"/>
                         </Style>
                     </materialDesign:DataGridTextColumn.CellStyle>

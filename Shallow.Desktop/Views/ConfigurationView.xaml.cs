@@ -35,6 +35,8 @@ namespace WpfApp1.Views
         public void getSites()
         {
             Sites = SitesService.getSites();
+            dgSites.ItemsSource = null;
+            dgSites.ItemsSource = Sites;
         }
     }
 }
