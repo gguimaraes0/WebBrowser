@@ -37,14 +37,15 @@ namespace Shallow.API.Services
             var cont = response.Content;
             return cont;
         }
-        public static string getResponsavel()
+        public static List<ResponsavelModel> getResponsavel()
         {
             RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/responsavel");
             RestRequest request = new RestRequest();
             IRestResponse response = null;
             response = client.Get(request);
             var cont = response.Content;
-            return cont;
+            List<ResponsavelModel> listResponsavel = JsonConvert.DeserializeObject<List<ResponsavelModel>>(cont);
+            return listResponsavel;
         }
 
         public static string deleteResponsavel(int responsavelID)

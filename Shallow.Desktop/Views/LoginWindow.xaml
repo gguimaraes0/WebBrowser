@@ -31,9 +31,9 @@
                 materialDesign:TextFieldAssist.HasClearButton="True"
                 materialDesign:HintAssist.Hint="Digite sua senha"/>
         <Button
-            x:Name="bttLogin"
+            x:Name="btnLogin"
             Width="70"
-            Click="bttLogin_Click"
+            Click="btnLogin_Click"
             Height="30"
             Grid.Row="3"
             Style="{StaticResource MaterialDesignRaisedLightButton}"

@@ -1,8 +1,12 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using Shallow.API.Services;
+using Shallow.Model.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +14,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Interface;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using MessageBox = System.Windows.Forms.MessageBox;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace WpfApp1.Views
 {
@@ -27,12 +35,17 @@ namespace WpfApp1.Views
 
         Window Window = null;
         ChromiumWebBrowser browser;
+        List<SiteModel> sites = new List<SiteModel>();
         public ICommand ForwardCommand { get; private set; }
         public ICommand BackCommand { get; private set; }
-        public WebView(Window window)
+        public WebView(Window window, ResponsavelModel responsavel = null, CriancaModel crianca = null)
         {
             InitializeComponent();
             Window = window;
+            if (crianca != null)
+                sites = SitesService.getSitesByCriancaID(crianca.id);
+            else
+                sites = new List<SiteModel>();
             CefSettings cefSettings = new CefSettings();
             Cef.Initialize(cefSettings);
             //txtUrl.Text = "https://www.google.com.br";
@@ -42,6 +55,31 @@ namespace WpfApp1.Views
         }
         private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            foreach (var item in sites)
+            {
+                string siteAtual = browser.Address.Replace("https://", "").Replace("http://", "");
+                int posFinal = siteAtual.IndexOf("/");
+                siteAtual = siteAtual.Substring(0, posFinal);
+
+                if (!item.url.Contains(siteAtual))
+                {
+                    const string message = "Site não permitido, deseja solicitar acesso?";
+                    const string caption = "ACESSO NEGADO";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
+
+                    // If the no button was pressed ...
+                    if (result == DialogResult.No)
+                    {
+                        browser.Back();
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)

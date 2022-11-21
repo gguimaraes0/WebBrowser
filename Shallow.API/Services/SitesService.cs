@@ -22,5 +22,18 @@ namespace Shallow.API.Services
             List<SiteModel> sites = JsonConvert.DeserializeObject<List<SiteModel>>(cont);
             return sites;
         }
+
+        public static List<SiteModel> getSitesByCriancaID(int criancaID)
+        {
+            RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/site");
+            RestRequest request = new RestRequest();
+            IRestResponse response = null;
+            response = client.Get(request);
+            var cont = response.Content;
+            List<SiteModel> sites = JsonConvert.DeserializeObject<List<SiteModel>>(cont);
+
+            sites = sites.Where(s => s.criancaID == criancaID).ToList();
+            return sites;
+        }
     }
 }

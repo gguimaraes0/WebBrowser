@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.Wpf;
+using Shallow.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,10 @@ namespace WpfApp1
         WebView webView = null;
         public ICustomBrowser ICustomBrowser { get; set; }
 
-        public MainWindow()
+        public MainWindow(ResponsavelModel responsavel = null, CriancaModel crianca = null)
         {
             InitializeComponent();
-            webView = new WebView(this);
+            webView = new WebView(this, responsavel, crianca);
             ICustomBrowser = webView;
             SwitchRegistrationsView(webView);
         }

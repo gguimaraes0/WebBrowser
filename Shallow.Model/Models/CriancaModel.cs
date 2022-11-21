@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shallow.Model.Models
 {
-    internal class CriancaModel
+    public class CriancaModel
     {
         public int id { get; set; }
         public string nome { get; set; }
