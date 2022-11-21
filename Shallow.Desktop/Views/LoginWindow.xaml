@@ -14,8 +14,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="Assets\shallowLogo.png">
-        </Image>
+        <Image Source="Assets\shallowLogo.png" Height="200" Margin="0,-28,0,38" Grid.RowSpan="2"/>
         <TextBox
             x:Name="txtUser"
             VerticalAlignment="Center"
