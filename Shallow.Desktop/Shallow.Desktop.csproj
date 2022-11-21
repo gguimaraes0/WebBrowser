@@ -162,6 +162,10 @@
       <Project>{5400A73A-CE71-4696-9FF3-27E80BA4F791}</Project>
       <Name>Shallow.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shallow.Model\Shallow.Model.csproj">
+      <Project>{C657E74B-10A9-465B-B181-C940E7979E61}</Project>
+      <Name>Shallow.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Assets\shallowLogo.png" />

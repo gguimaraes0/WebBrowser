@@ -1,7 +1,10 @@
 ﻿using CefSharp;
+using Shallow.API.Services;
+using Shallow.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,9 +25,16 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class ConfigurationView : UserControl
     {
+        public List<SiteModel> Sites = new List<SiteModel>();
         public ConfigurationView()
         {
             InitializeComponent();
+            getSites();
+        }
+
+        public void getSites()
+        {
+            Sites = SitesService.getSites();
         }
     }
 }

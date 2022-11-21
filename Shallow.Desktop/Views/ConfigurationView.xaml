@@ -3,10 +3,90 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfApp1.Views"
+             xmlns:local="clr-namespace:WpfApp1.Views" xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="CadetBlue">
-            
+        <DataGrid
+                        Name="dgPhysician"
+                        Grid.Row="2"
+                        Margin="100,105,100,100"
+                        FontSize="12"
+                        CanUserReorderColumns="False"
+                        BorderBrush="Transparent"
+                        Background="Transparent"
+                        CanUserSortColumns="True"
+                        CanUserAddRows="False"
+                        AutoGenerateColumns="False"
+                        SelectionUnit="FullRow"
+                        VerticalContentAlignment="Center"
+                        EnableColumnVirtualization="True"
+                        EnableRowVirtualization="True"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling"
+                        Grid.ColumnSpan="2"
+                        HorizontalContentAlignment="Center"
+                        RowHeaderWidth="0"
+                        ItemsSource="{Binding Sites}"
+                    >
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <!--Coluna do nome da url-->
+                <materialDesign:DataGridTextColumn
+                                Width="25*"
+                                Binding="{Binding Url}"
+                                Header="URL"
+                                IsReadOnly="True"
+                                CanUserResize="False"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+                        </Style>
+                    </materialDesign:DataGridTextColumn.HeaderStyle>
+                    <materialDesign:DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip"  Value="{Binding Url}"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Margin" Value="2 0 2 0"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Style>
+                    </materialDesign:DataGridTextColumn.CellStyle>
+                </materialDesign:DataGridTextColumn>
+                <!--Coluna do Status-->
+                <materialDesign:DataGridTextColumn
+                                Width="21.75*"
+                                Binding="{Binding getStatus}"
+                                Header="Status"
+                                IsReadOnly="True"
+                                CanUserResize="False"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    <materialDesign:DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+                        </Style>
+                    </materialDesign:DataGridTextColumn.HeaderStyle>
+                    <materialDesign:DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip"  Value="{Binding getStatus}"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Margin" Value="2 0 2 0"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Style>
+                    </materialDesign:DataGridTextColumn.CellStyle>
+                </materialDesign:DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

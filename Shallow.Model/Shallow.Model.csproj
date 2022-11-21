@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="Models\CriancaModel.cs" />
     <Compile Include="Models\ResponsavelModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
