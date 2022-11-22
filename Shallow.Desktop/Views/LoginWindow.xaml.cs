@@ -20,11 +20,12 @@ namespace WpfApp1.Views
 
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //string email = txtUser.Text;
-            //string password = txtPassword.Password;
+            btnLogin.IsEnabled = false;
+            pbLogin.Visibility = Visibility.Visible;
 
-            string email ="teste";
-            string password = "123456";
+            string email = txtUser.Text;
+            string password = txtPassword.Password;
+
 
             List<CriancaModel> listCrianca = CriancaService.getCrianca();
 
@@ -45,13 +46,14 @@ namespace WpfApp1.Views
                 MainWindow mainWindow = new MainWindow(responsavelLogin, null);
                 mainWindow.Show();
                 this.Close();
-
             }
             else
             {
                 MessageBox.Show("Usuário ou senha inválidos");
                 txtUser.Text = "";
                 txtPassword.Name = "";
+                btnLogin.IsEnabled = true;
+                pbLogin.Visibility = Visibility.Collapsed;
             }
         }
     }

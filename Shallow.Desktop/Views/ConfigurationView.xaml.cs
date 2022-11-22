@@ -50,6 +50,7 @@ namespace WpfApp1.Views
                 btnVisualizeChild.Visibility = Visibility.Visible;
                 btnRegisterChild.Visibility = Visibility.Visible;
                 btnRegisterSiteforChild.Visibility = Visibility.Visible;
+                btnVisualizeSites.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -80,17 +81,20 @@ namespace WpfApp1.Views
         {
             dgSites.Visibility = Visibility.Collapsed;
             dgChild.Visibility = Visibility.Collapsed;
-
         }
 
         private void btnVisualizeChild_Click(object sender, RoutedEventArgs e)
         {
             getChild();
+            dgSites.Visibility = Visibility.Collapsed;
+            dgChild.Visibility = Visibility.Visible;
         }
 
         private void btnVisualizeSites_Click(object sender, RoutedEventArgs e)
         {
             getSites();
+            dgSites.Visibility = Visibility.Visible;
+            dgChild.Visibility = Visibility.Collapsed;
         }
 
         private void btnRegisterSiteforChild_Click(object sender, RoutedEventArgs e)

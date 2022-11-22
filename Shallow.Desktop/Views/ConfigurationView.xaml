@@ -33,6 +33,7 @@
                         HorizontalContentAlignment="Center"
                         RowHeaderWidth="0"
                         DataContext="{Binding Source=Sites}"
+            Visibility="Collapsed"
                     >
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
@@ -197,6 +198,9 @@
                 </materialDesign:DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Grid.Row="0">
+            
+        </Grid>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

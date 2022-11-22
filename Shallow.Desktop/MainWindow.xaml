@@ -165,5 +165,45 @@
                 </Button>
             </Grid>
         </Grid>
+        <Grid x:Name="gdBlock" Background="Black" Opacity="0.5" Visibility="Collapsed">
+
+        </Grid>
+        <Grid Name="gdLoading" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33.3333*"/>
+                <ColumnDefinition Width="33.3333*"/>
+                <ColumnDefinition Width="33.3333*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33.3333*"/>
+                <RowDefinition Height="33.3333*"/>
+                <RowDefinition Height="33.3333*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33.3333*"/>
+                    <ColumnDefinition Width="33.3333*"/>
+                    <ColumnDefinition Width="33.3333*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33.3333*"/>
+                    <RowDefinition Height="33.3333*"/>
+                    <RowDefinition Height="33.3333*"/>
+                </Grid.RowDefinitions>
+                <ProgressBar
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Opacity="1"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Foreground="{DynamicResource PrimaryPortalColor}"
+                    Value="0"
+                    IsIndeterminate="True"
+                    Height="{Binding}"
+                    Width="{Binding}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+                />
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

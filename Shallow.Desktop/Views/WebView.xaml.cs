@@ -27,6 +27,8 @@ using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.Forms.MessageBox;
 using UserControl = System.Windows.Controls.UserControl;
 using System.Configuration;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Window = System.Windows.Window;
 
 namespace WpfApp1.Views
 {
@@ -35,16 +37,19 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class WebView : UserControl, ICustomBrowser
     {
-
-        Window Window = null;
+        Window Window { get; set; }
         ChromiumWebBrowser browser;
         List<SiteModel> sites = new List<SiteModel>();
+        ResponsavelModel responsavelModel = new ResponsavelModel();
         public ICommand ForwardCommand { get; private set; }
         public ICommand BackCommand { get; private set; }
         public WebView(Window window, ResponsavelModel responsavel = null, CriancaModel crianca = null)
         {
             InitializeComponent();
+
             Window = window;
+            loadingVisible();
+            responsavelModel = responsavel;
             if (crianca != null)
                 sites = SitesService.getSitesByCriancaID(crianca.id);
             else
@@ -55,9 +60,24 @@ namespace WpfApp1.Views
             browser = new ChromiumWebBrowser("https://www.google.com.br");
             gridContent.Children.Add(browser);
             browser.AddressChanged += Browser_AddressChanged;
+
+            loadingCollapsed();
+        }
+        public void loadingCollapsed()
+        {
+            (Window as MainWindow).gdBlock.Visibility = Visibility.Collapsed;
+            (Window as MainWindow).gdLoading.Visibility = Visibility.Collapsed;
+        }
+
+        public void loadingVisible()
+        {
+            (Window as MainWindow).gdBlock.Visibility = Visibility.Visible;
+            (Window as MainWindow).gdLoading.Visibility = Visibility.Visible;
         }
         private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if (responsavelModel != null)
+                return;
 
             string siteAtual = browser.Address.Replace("https://", "").Replace("http://", "");
             int posFinal = siteAtual.IndexOf("/");
@@ -76,7 +96,7 @@ namespace WpfApp1.Views
                 // If the no button was pressed ...
                 if (result == DialogResult.Yes)
                 {
-                    SendEmail();
+                    // SendEmail();
                 }
             }
         }
@@ -157,7 +177,9 @@ namespace WpfApp1.Views
 
         public void HomePage()
         {
+            loadingVisible();
             browser.Load("https://www.google.com.br");
+            loadingCollapsed();
         }
 
         public void ConfigurationPage()
