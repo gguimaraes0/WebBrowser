@@ -23,8 +23,14 @@ namespace WpfApp1
         WebView webView = null;
         public ICustomBrowser ICustomBrowser { get; set; }
 
+        public ResponsavelModel ResponsavelModel { get; set; }
+        public CriancaModel CriancaModel { get; set; }
+
+
         public MainWindow(ResponsavelModel responsavel = null, CriancaModel crianca = null)
         {
+            CriancaModel = crianca;
+            ResponsavelModel = responsavel;
             InitializeComponent();
             webView = new WebView(this, responsavel, crianca);
             ICustomBrowser = webView;
@@ -43,7 +49,7 @@ namespace WpfApp1
         private void btnConfig_Click(object sender, RoutedEventArgs e)
         {
             if (configurationView == null)
-                configurationView = new ConfigurationView();
+                configurationView = new ConfigurationView(ResponsavelModel, CriancaModel);
 
             if (configurationView.Visibility == Visibility.Collapsed)
             {

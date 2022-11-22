@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +26,7 @@ using WpfApp1.Interface;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.Forms.MessageBox;
 using UserControl = System.Windows.Controls.UserControl;
+using System.Configuration;
 
 namespace WpfApp1.Views
 {
@@ -55,30 +58,68 @@ namespace WpfApp1.Views
         }
         private void Browser_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            foreach (var item in sites)
+
+            string siteAtual = browser.Address.Replace("https://", "").Replace("http://", "");
+            int posFinal = siteAtual.IndexOf("/");
+            siteAtual = siteAtual.Substring(0, posFinal);
+
+            List<SiteModel> exists = sites.Where(s => siteAtual.Contains(s.url)).ToList();
+
+            if (exists.Count == 0)
             {
-                string siteAtual = browser.Address.Replace("https://", "").Replace("http://", "");
-                int posFinal = siteAtual.IndexOf("/");
-                siteAtual = siteAtual.Substring(0, posFinal);
-
-                if (!item.url.Contains(siteAtual))
+                browser.Back();
+                const string message = "Site não permitido, deseja solicitar acesso?";
+                const string caption = "ACESSO NEGADO";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Warning);
+                // If the no button was pressed ...
+                if (result == DialogResult.Yes)
                 {
-                    const string message = "Site não permitido, deseja solicitar acesso?";
-                    const string caption = "ACESSO NEGADO";
-                    var result = MessageBox.Show(message, caption,
-                                                 MessageBoxButtons.YesNo,
-                                                 MessageBoxIcon.Warning);
-
-                    // If the no button was pressed ...
-                    if (result == DialogResult.No)
-                    {
-                        browser.Back();
-                    }
-                    else
-                    {
-
-                    }
+                    SendEmail();
                 }
+            }
+        }
+
+        public void SendEmail()
+        {
+            try
+            {
+                //MailMessage message = new MailMessage();
+                //SmtpClient smtp = new SmtpClient();
+
+                //message.From = new MailAddress("shallowwebbrowser@gmail.com");
+                //message.To.Add(new MailAddress("gguimaraes1602@gmail.com"));
+                //message.Subject = "Test";
+                //message.Body = "Content";
+
+
+                //smtp.UseDefaultCredentials = false;
+                //smtp.Credentials = new NetworkCredential("shallowwebbrowser@gmail.com", "shallow123");
+                //smtp.Port = 587;
+                //smtp.Host = "smtp.gmail.com";
+                //smtp.EnableSsl = true;
+                //smtp.UseDefaultCredentials = false;
+                //smtp.Credentials = new NetworkCredential("matheussarquis2@gmail.com", "pwd");
+                //smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //smtp.Send(message);
+
+
+                SmtpClient server = new SmtpClient("smtp.gmail.com");
+                server.Credentials = new NetworkCredential("shallowwebbrowser@gmail.com", "shallow123"); //Autetificação
+                MailMessage email = new MailMessage();
+                email.From = new MailAddress("shallowwebbrowser@gmail.com");
+                email.To.Add("gguimaraes1602@gmail.com");
+                email.Subject = ConfigurationSettings.AppSettings["MailSubject"];
+                email.Body = "Usuário";
+
+                server.Send(email);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("err: " + ex.Message);
             }
         }
 

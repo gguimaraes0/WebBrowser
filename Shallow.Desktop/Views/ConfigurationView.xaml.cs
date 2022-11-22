@@ -26,17 +26,76 @@ namespace WpfApp1.Views
     public partial class ConfigurationView : UserControl
     {
         public List<SiteModel> Sites = new List<SiteModel>();
-        public ConfigurationView()
+
+        public List<CriancaModel> Child = new List<CriancaModel>();
+
+        public ResponsavelModel ResponsavelModel { get; set; }
+        public CriancaModel CriancaModel { get; set; }
+
+        public ConfigurationView(ResponsavelModel responsavel = null, CriancaModel crianca = null)
         {
             InitializeComponent();
+            CriancaModel = crianca;
+            ResponsavelModel = responsavel;
             getSites();
+
+            if (CriancaModel != null)
+            {
+                btnVisualizeChild.Visibility = Visibility.Collapsed;
+                btnRegisterChild.Visibility = Visibility.Collapsed;
+                btnRegisterSiteforChild.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnVisualizeChild.Visibility = Visibility.Visible;
+                btnRegisterChild.Visibility = Visibility.Visible;
+                btnRegisterSiteforChild.Visibility = Visibility.Visible;
+            }
         }
 
         public void getSites()
         {
-            Sites = SitesService.getSites();
+            if (CriancaModel != null)
+                Sites = SitesService.getSitesByCriancaID(CriancaModel.id);
+            else
+                Sites = SitesService.getSites();
+
             dgSites.ItemsSource = null;
             dgSites.ItemsSource = Sites;
+        }
+
+        public void getChild()
+        {
+            dgSites.Visibility = Visibility.Collapsed;
+            if (CriancaModel == null)
+                Child = CriancaService.getSitesByResponsavelID(ResponsavelModel.id);
+
+            dgChild.ItemsSource = null;
+            dgChild.ItemsSource = Child;
+
+            dgChild.Visibility = Visibility.Visible;
+        }
+
+        private void btnRegisterChild_Click(object sender, RoutedEventArgs e)
+        {
+            dgSites.Visibility = Visibility.Collapsed;
+            dgChild.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void btnVisualizeChild_Click(object sender, RoutedEventArgs e)
+        {
+            getChild();
+        }
+
+        private void btnVisualizeSites_Click(object sender, RoutedEventArgs e)
+        {
+            getSites();
+        }
+
+        private void btnRegisterSiteforChild_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

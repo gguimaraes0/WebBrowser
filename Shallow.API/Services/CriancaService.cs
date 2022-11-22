@@ -21,5 +21,21 @@ namespace Shallow.API.Services
             List<CriancaModel> crianca = JsonConvert.DeserializeObject<List<CriancaModel>>(cont);
             return crianca;
         }
+
+        public static List<CriancaModel> getSitesByResponsavelID(int id)
+        {
+            RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/crianca");
+            RestRequest request = new RestRequest();
+            IRestResponse response = null;
+            response = client.Get(request);
+            var cont = response.Content;
+            List<CriancaModel> crianca = JsonConvert.DeserializeObject<List<CriancaModel>>(cont);
+            crianca = crianca.Where(c => c.responsavelID == id).ToList();
+            return crianca;
+        }
+
+
+
+
     }
 }
