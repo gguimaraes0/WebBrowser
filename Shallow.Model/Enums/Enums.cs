@@ -10,7 +10,6 @@ namespace Shallow.Model.Enums
     {
         public enum Status
         {
-            Indefinido = 0,
             Pendente = 1,
             Liberado = 2
         }

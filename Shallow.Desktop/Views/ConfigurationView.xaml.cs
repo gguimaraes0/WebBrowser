@@ -64,7 +64,7 @@ namespace WpfApp1.Views
                 btnVisualizeChild.Visibility = Visibility.Visible;
                 btnRegisterChild.Visibility = Visibility.Visible;
                 btnRegisterSiteforChild.Visibility = Visibility.Visible;
-                btnVisualizeSites.Visibility = Visibility.Collapsed;
+                btnVisualizeSites.Visibility = Visibility.Visible;
                 dgChild.Visibility = Visibility.Visible;
             }
         }
@@ -216,7 +216,7 @@ namespace WpfApp1.Views
             {
                 SiteModel siteModel = new SiteModel();
                 siteModel.url = url;
-                siteModel.status = (int)Enums.Status.Liberado;
+                siteModel.status = Enums.Status.Liberado;
                 siteModel.criancaID = criancaModel.id;
 
                 string resp = SitesService.postSite(siteModel);

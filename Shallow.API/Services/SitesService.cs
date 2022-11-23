@@ -38,7 +38,7 @@ namespace Shallow.API.Services
 
         public static string postSite(SiteModel siteModel)
         {
-            RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/responsavel");
+            RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/site");
             RestRequest request = new RestRequest();
             request.AddJsonBody(siteModel);
 

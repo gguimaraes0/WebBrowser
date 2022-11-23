@@ -29,7 +29,7 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Background="Green"
-                    BorderBrush="Black"
+                    BorderBrush="Transparent"
                     BorderThickness="1"
                     Height="35"
                     Width="35"
@@ -41,7 +41,7 @@
                         Width="auto"
                         Height="auto"
                         Margin="5"
-                        Foreground="Black"
+                        Foreground="White"
                         />
                 </Button>
                 <Button
@@ -50,8 +50,8 @@
                     Grid.Column="3"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Background="Yellow"
-                    BorderBrush="Black"
+                    Background="Orange"
+                    BorderBrush="Transparent"
                     Width="{Binding ActualWidth, ElementName=btnMinimize}"
                     Height="{Binding ActualHeight,ElementName=btnMinimize}"
                     Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -62,7 +62,7 @@
                         Width="auto"
                         Height="auto"
                         Margin="5"
-                        Foreground ="Black"
+                        Foreground ="White"
                     />
                 </Button>
                 <Button
@@ -72,7 +72,7 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Background="Red"
-                    BorderBrush="Black"
+                    BorderBrush="Transparent"
                     Width="{Binding ActualWidth, ElementName=btnMinimize}"
                     Height="{Binding ActualHeight,ElementName=btnMinimize}"
                     Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -83,7 +83,7 @@
                         Width="auto"
                         Height="auto"
                         Margin="5"
-                        Foreground="Black"
+                        Foreground="White"
                     />
                 </Button>
 

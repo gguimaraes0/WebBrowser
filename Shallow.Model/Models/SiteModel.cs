@@ -11,12 +11,7 @@ namespace Shallow.Model.Models
     {
         public int id { get; set; }
         public string url { get; set; }
-        public int status { get; set; }
+        public Status status { get; set; }
         public int criancaID { get; set; }
-
-        public Status getStatus()
-        {
-            return (Status)this.status;
-        }
     }
 }
