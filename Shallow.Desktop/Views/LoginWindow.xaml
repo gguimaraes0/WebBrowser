@@ -23,7 +23,10 @@
             Width="200"
             Grid.Row="1"
             materialDesign:HintAssist.Hint="Digite o usuário"/>
+
+                <!--Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"-->
         <PasswordBox
+                IsEnabled="{Binding ElementName=RevealPasswordOutlinedEnabled, Path=IsChecked}"
                 Grid.Row="2"
                 Height="30"
                 Width="200"

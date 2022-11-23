@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace WpfApp1.Views
 {
@@ -26,26 +27,49 @@ namespace WpfApp1.Views
             string email = txtUser.Text;
             string password = txtPassword.Password;
 
+            bool isValid = true;
 
-            List<CriancaModel> listCrianca = CriancaService.getCrianca();
-
-            List<ResponsavelModel> listResponsavel = ResponsavelService.getResponsavel();
-
-            CriancaModel criancaLogin = listCrianca.Where(c => c.email == email && c.senha == password).FirstOrDefault();
-            ResponsavelModel responsavelLogin = listResponsavel.Where(r => r.email == email && r.senha == password).FirstOrDefault();
-
-            if (criancaLogin != null)
+            if (String.IsNullOrEmpty(email))
             {
-                MainWindow mainWindow = new MainWindow(null, criancaLogin);
-                mainWindow.Show();
-                this.Close();
-
+                txtUser.Foreground = Brushes.Red;
+                isValid = false;
             }
-            else if (responsavelLogin != null)
+            if (String.IsNullOrEmpty(password))
             {
-                MainWindow mainWindow = new MainWindow(responsavelLogin, null);
-                mainWindow.Show();
-                this.Close();
+                txtPassword.Foreground = Brushes.Red;
+                isValid = false;
+            }
+
+            if (isValid)
+            {
+                List<CriancaModel> listCrianca = CriancaService.getCrianca();
+
+                List<ResponsavelModel> listResponsavel = ResponsavelService.getResponsavel();
+
+                CriancaModel criancaLogin = listCrianca.Where(c => c.email == email && c.senha == password).FirstOrDefault();
+                ResponsavelModel responsavelLogin = listResponsavel.Where(r => r.email == email && r.senha == password).FirstOrDefault();
+
+                if (criancaLogin != null)
+                {
+                    MainWindow mainWindow = new MainWindow(null, criancaLogin);
+                    mainWindow.Show();
+                    this.Close();
+
+                }
+                else if (responsavelLogin != null)
+                {
+                    MainWindow mainWindow = new MainWindow(responsavelLogin, null);
+                    mainWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Usuário ou senha inválidos");
+                    txtUser.Text = "";
+                    txtPassword.Name = "";
+                    btnLogin.IsEnabled = true;
+                    pbLogin.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {

@@ -20,16 +20,10 @@ namespace Shallow.API.Services
 {
     public class ResponsavelService
     {
-        public static string postResponsavel()
+        public static string postResponsavel(ResponsavelModel responsavelModel)
         {
             RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/responsavel");
             RestRequest request = new RestRequest();
-
-
-            ResponsavelModel responsavelModel = new ResponsavelModel();
-            responsavelModel.nome = "joao";
-            responsavelModel.email = "joao@gmail.com";
-            responsavelModel.senha = "12345678";
             request.AddJsonBody(responsavelModel);
             
             IRestResponse response = null;

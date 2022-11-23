@@ -33,7 +33,7 @@
                         HorizontalContentAlignment="Center"
                         RowHeaderWidth="0"
                         DataContext="{Binding Source=Sites}"
-            Visibility="Collapsed"
+                        Visibility="Collapsed"
                     >
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
@@ -198,10 +198,124 @@
                 </materialDesign:DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="0">
-            
+        <Grid Grid.Row="0" x:Name="GridCadastroSite" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Cadastro de Sites" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+            <TextBox
+            x:Name="txtUrl"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Height="30"
+            Width="200"
+            Grid.Row="1"
+            materialDesign:HintAssist.Hint="Digite a url"/>
+            <ComboBox
+                x:Name="cbChild"
+                Grid.Row="2"
+                VirtualizingPanel.IsVirtualizing="True" 
+                VirtualizingPanel.VirtualizationMode="Recycling"
+                IsEditable="True"
+                IsTextSearchEnabled="False"                    
+                DataContext="{Binding Source=Child}"
+                Style="{StaticResource MaterialDesignFilledComboBox}"
+                materialDesign:HintAssist.Hint="Selecione o dependente"
+                Width="200"
+                
+                IsDropDownOpen="{Binding Path=cbPePhysician, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"  
+                Height="50">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding nome}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+                <ComboBox.SelectedIndex>
+                    <Binding Path="cbChild" UpdateSourceTrigger="PropertyChanged">
+                    </Binding>
+                </ComboBox.SelectedIndex>
+            </ComboBox>
+            <Button
+            x:Name="btnCadastrarSite"
+            Width="100"
+            Click="btnCadastrarSite_Click"
+            Height="30"
+            Grid.Row="5"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            materialDesign:ButtonAssist.CornerRadius="5"
+            ToolTip="Cadastrar dependente"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                <TextBlock
+               Text="Cadastrar" />
+            </Button>
         </Grid>
+        <Grid Grid.Row="0" x:Name="GridCadastroDependente" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
 
+            </Grid.RowDefinitions>
+            <TextBlock Text="Cadastro de Dependente" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+            <TextBox
+            x:Name="txtNome"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Height="30"
+            Width="200"
+            Grid.Row="1"
+            materialDesign:HintAssist.Hint="Digite o nome"/>
+            <TextBox
+            x:Name="txtEmail"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Height="30"
+            Width="200"
+            Grid.Row="2"
+            materialDesign:HintAssist.Hint="Digite o email"/>
+            <PasswordBox
+                IsEnabled="{Binding ElementName=RevealPasswordOutlinedEnabled, Path=IsChecked}"
+                Grid.Row="3"
+                Height="30"
+                Width="200"
+                x:Name="txtPassword1"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:HintAssist.Hint="Digite sua senha"/>
+            <PasswordBox
+                IsEnabled="{Binding ElementName=RevealPasswordOutlinedEnabled, Path=IsChecked}"
+                Grid.Row="4"
+                Height="30"
+                Width="200"
+                x:Name="txtPasswordConfirm"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:HintAssist.Hint="Confirme sua senha"/>
+            <Button
+            x:Name="btnCadastrar"
+            Width="100"
+            Click="btnCadastrar_Click"
+            Height="30"
+            Grid.Row="5"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            materialDesign:ButtonAssist.CornerRadius="5"
+            ToolTip="Cadastrar dependente"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                <TextBlock
+               Text="Cadastrar" />
+            </Button>
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

@@ -35,5 +35,17 @@ namespace Shallow.API.Services
             sites = sites.Where(s => s.criancaID == criancaID).ToList();
             return sites;
         }
+
+        public static string postSite(SiteModel siteModel)
+        {
+            RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/responsavel");
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(siteModel);
+
+            IRestResponse response = null;
+            response = client.Post(request);
+            var cont = response.Content;
+            return cont;
+        }
     }
 }

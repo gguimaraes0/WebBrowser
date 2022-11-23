@@ -22,7 +22,7 @@ namespace Shallow.API.Services
             return crianca;
         }
 
-        public static List<CriancaModel> getSitesByResponsavelID(int id)
+        public static List<CriancaModel> getSitesByCriancaID(int id)
         {
             RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/crianca");
             RestRequest request = new RestRequest();
@@ -33,9 +33,17 @@ namespace Shallow.API.Services
             crianca = crianca.Where(c => c.responsavelID == id).ToList();
             return crianca;
         }
+        public static string postCrianca(CriancaModel criancaModel)
+        {
+            RestClient client = new RestClient("https://c33fbkz77k.execute-api.sa-east-1.amazonaws.com/v1/crianca");
+            RestRequest request = new RestRequest();
+            request.AddJsonBody(criancaModel);
 
-
-
+            IRestResponse response = null;
+            response = client.Post(request);
+            var cont = response.Content;
+            return cont;
+        }
 
     }
 }
